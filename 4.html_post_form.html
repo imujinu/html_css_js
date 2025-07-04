@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="">
+        <h2>글쓰기 form 생성</h2>
+        <div>
+            제목 : <input type="text">
+        </div>
+
+
+     
+   <div>  
+       내용 : <textarea name="contents" id="contents" rows="10" cols="30" placeholder="내용을 적어주세요"></textarea>
+    </div>
+
+     <div>
+        <p>예약여부</p>
+        <label for="yes">
+            <input type="radio" id="yes" name="radio"> yes
+        </label>
+        <label for="no">
+
+            <input type="radio" id="no" name="radio">no
+        </label>
+    </div>
+
+    <div>
+        <label for="time">예약 등록 시간 : 
+
+            <input type="datetime-local" id="time">
+        </label>
+    </div>
+    <input type="submit" value="등록하기">
+    </form>
+
+    
+</body>
+</html>
