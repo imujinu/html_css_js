@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function showObject() {
+        // js의 객체는 별도의 class가 필요하지 않음
+        let person = { name: "hong", email: "hong@naver.com", age: 30 };
+        // 객체 전체조회
+        console.log(person);
+        // 객체 특정 요소 조회 방법
+        console.log(person.name);
+        //객체 특정 요소 조회 방법 2.
+        console.log(person["name"]);
+
+        //Object.keys(객체명) : 객체의 키를 배열형태로 반환
+        const keyArr = Object.keys(person);
+        for (let i = 0; i < keyArr.length; i++) {
+          console.log(person[keyArr[i]]);
+        }
+        // for (let i in keyArr) {
+        //   console.log(person[keyArr[i]]);
+        // }
+        // keyArr.forEach((a) => {
+        //   console.log(person[a]);
+        // });
+        person.age = 20;
+        console.log(person.age);
+      }
+
+      function makeObject() {
+        // 객체 생성 방법 1. 리터럴 방식으로 생성
+        let person1 = { name: "hong", email: "hong@naver.com", age: 30 };
+
+        // 객체 생성 방법 2. 빈 객체 생성 후 키와 값을 추가
+        let person2;
+
+        person2 = { name: "jin" };
+        console.log(person2.name);
+        person2["email"] = "kim@naver.com";
+        person2.age = 30;
+        person2.password = "1234";
+
+        // 객체 생성 방법 3. 단축속성명 바식 : key와 value 값이 동일하게 사용될 때 간편하게 객체 생성하는 방식
+        const name = "lee";
+        const age = 30;
+        const person3 = { name, age };
+        console.log(person3);
+
+        const obj3 = { a: 1, b: 2 };
+        const obj4 = { ...obj3, c: 3 };
+        console.log(obj4);
+      }
+
+      (() => {
+        console.log("로딩완료");
+      })();
+    </script>
+  </head>
+  <body>
+    <h2>javascript 객체</h2>
+    <button onclick="showObject()">객체 조회</button>
+    <button onclick="makeObject()">객체 생성</button>
+  </body>
+</html>
