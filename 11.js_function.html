@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function basicFunction() {
+        console.log("hello world");
+      }
+      const variableFunction = function () {
+        console.log("hello world1");
+      };
+
+      // function 대신 =>로 대체 가능
+      // 만약 실행문이 1줄이라면 , {} 생략 가능
+
+      const variableFunction2 = () => console.log("helloworld2");
+      function returnFunction() {
+        console.log(makeString());
+        console.log(makeString2());
+        console.log(makeString3());
+      }
+
+      function makeString() {
+        return "hello javascript";
+      }
+      const makeString2 = () => {
+        return "hello javascript2";
+      };
+      const makeString3 = () => "hello javascript3";
+
+      paramFunction1 = (a, b) => console.log(a + b);
+      paramFunction2 = (name = "홍길동") => console.log(name);
+      paramFunction3 = (arr) => {
+        console.log(arr);
+      };
+      paramFunction4 = (...arr) => {
+        console.log(arr);
+      };
+
+      functionWithException = () => {
+        try {
+          example();
+        } catch (e) {
+          console.log(e);
+        }
+        console.log("hello world");
+      };
+      showPerson = () => {
+        const p1 = createPerson("진우", 20);
+        console.log(p1.printPerson());
+      };
+      createPerson = (name, age) => {
+        return {
+          name,
+          age,
+          printPerson: () => "이름은" + name + "나이는" + age + "입니다.",
+        };
+      };
+      reloadFunction = () => {
+        window.location.reload();
+      };
+      moveScreen = () => {
+        window.location.href = "http://naver.com";
+      };
+    </script>
+  </head>
+  <body>
+    <h2>js 기본 함수 호출</h2>
+    <button onclick="basicFunction()">함수 호출 basic</button>
+    <button onclick="variableFunction()">함수 호출 basic</button>
+    <button onclick="variableFunction2()">함수 호출 basic</button>
+    <button onclick="returnFunction()">리턴이 있는 함수 호출</button>
+    <button onclick="paramFunction1(1,2)">매개변수 있는 함수 호출1</button>
+    <button onclick="paramFunction2()">매개변수 있는 함수 호출2</button>
+    <button onclick="paramFunction3([1,2,3,4,5])">
+      매개변수 있는 함수 호출3
+    </button>
+    <button onclick="paramFunction4(1,2,3,4,5)">
+      매개변수 있는 함수 호출4
+    </button>
+
+    <h2>js 예외처리</h2>
+    <button onclick="functionWithException()">예외처리 함수 호출</button>
+
+    <h2>객체 안에 있는 함수 호출</h2>
+    <button onclick="showPerson()">객체 안에 있는 함수 호출</button>
+
+    <h2>window 객체</h2>
+    <button onclick="reloadFunction()">화면 새로고침</button>
+    <button onclick="moveScreen()">화면이동</button>
+
+    <!-- html 화면 내에서 특정행위를 했을 때 자동실행되는 함수 -->
+    <h2>eventListener 객체 활용</h2>
+    <button id="button1">버튼 1</button>
+    <button onclick="scrollEvent()">버튼 2</button>
+
+    <h2>html 요소 동적으로 생성</h2>
+    <button onclick="addItem()">항목추가</button>
+
+    <div id="target">
+      <input type="text" />
+      <br />
+    </div>
+
+    <script>
+      addItem = () => {
+        document.querySelector("#target").innerHTML += "<input type='text'>";
+      };
+
+      const b1 = document
+        .querySelector("#button1")
+        .addEventListener("click", () => alert("hello world"));
+
+      scrollEvent = () => {
+        window.addEventListener("scroll", () => console.log("hello world2"));
+      };
+    </script>
+  </body>
+</html>

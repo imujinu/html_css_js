@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function biggerNum(a, b) {
+        const bigger = a > b ? a : b;
+        document.querySelector(".result").innerHTML = bigger;
+      }
+      function stringCompare() {
+        const x = "abc";
+        const y = "bcd";
+        console.log(x < y);
+      }
+    </script>
+  </head>
+  <body>
+    <h2>연산자 예시</h2>
+    <button onclick="biggerNum(3,4)">삼항연산자 결과</button>
+    <p class="result">결과값</p>
+
+    <button onclick="stringCompare()">문자비교 결과</button>
+
+    <h2>void 연산자</h2>
+    <!-- a태그에 아무런 동작을 하지 않게 하기 위해 void를 사용할 수 있다.  -->
+    <a href="javascript:void(0)">클릭1</a>
+  </body>
+</html>
