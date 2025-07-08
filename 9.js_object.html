@@ -57,11 +57,64 @@
       (() => {
         console.log("로딩완료");
       })();
+
+      function makeArr() {
+        let fruits = ["사과", "배", "바나나"];
+        fruits.push("포도");
+        console.log(fruits);
+        fruits.pop();
+        console.log(fruits);
+
+        //filter, map
+
+        const nums = [1, 2, 3, 4, 5, 6];
+        const newNums1 = nums.filter((a) => a % 2 == 0);
+        console.log(newNums1);
+
+        const newNums2 = nums.map((a) => a * a);
+        console.log(newNums2);
+      }
+
+      function makeObjArr() {
+        let arr = [
+          { name: "진우", age: 20 },
+          { name: "우진", age: 22 },
+          { name: "이무우", age: 25 },
+        ];
+
+        // for (let i = 0; i < obj.length; i++) {
+        //   obj[i] = { ...obj[i], email: "jinwoo" + i };
+        // }
+
+        const newArr = arr.map((a) => {
+          return { ...a, email: "test@naver.com" };
+        });
+        console.log(newArr);
+      }
+
+      function convertType() {
+        let st1 = "10";
+        let st2 = "hello";
+        let num1 = Number(st1);
+        console.log(typeof num1);
+        num1 = String(num1);
+
+        let num2 = Number(st2);
+        // Nan이 담김(Not a number);
+        console.log(num2);
+
+        // ==은 타입 체크 x , ===은 타입 체크 
+        console.log(10 == "10");
+        console.log(10 === "10");
+      }
     </script>
   </head>
   <body>
     <h2>javascript 객체</h2>
     <button onclick="showObject()">객체 조회</button>
     <button onclick="makeObject()">객체 생성</button>
+    <button onclick="makeArr()">배열 생성</button>
+    <button onclick="makeObjArr()">배열 생성</button>
+    <button onclick="convertType()">배열 생성</button>
   </body>
 </html>
