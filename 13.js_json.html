@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js json</title>
+  </head>
+  <body>
+    <table border="1" style="border-collapse: collapse; margin: auto">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>age</th>
+          <th>score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="name"></td>
+          <td id="age"></td>
+          <td id="score"></td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="1" style="border-collapse: collapse; margin: auto">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>age</th>
+          <th>score</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyId"></tbody>
+    </table>
+
+    <script>
+      const jsonText = '{"name":"Alice","age":25,"score":85}';
+
+      // json을 js의 객체로 역직렬화(parsing)
+      const obj1 = JSON.parse(jsonText);
+      console.log(obj1);
+      document.getElementById("name").innerHTML = obj1.name;
+      document.getElementById("age").innerHTML = obj1.age;
+      document.getElementById("score").innerHTML = obj1.score;
+
+      const jsonText2 =
+        '[{"name":"Alice","age":25,"score":85},{"name":"Bob","age":28,"score":92},{"name":"Charlie","age":32,"score":88}]';
+      const obj2 = JSON.parse(jsonText2);
+      for (let i = 0; i < jsonText2.length; i++) {
+        const obj = JSON.parse(jsonText2)[i];
+        document.getElementById("tbodyId").innerHTML += `
+        <thead>
+        <tr>
+          <th>name : ${obj.name}</th>
+          <th>age : ${obj.age}</th>
+          <th>score : ${obj.score}</th>
+        </tr>
+        </thead>
+          `;
+      }
+      const jsonText3 = JSON.stringify(obj2);
+      console.log(jsonText3);
+    </script>
+  </body>
+</html>

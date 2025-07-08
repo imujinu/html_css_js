@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>계산기</title>
+
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1.0"
+            />
+            <title>계산기</title>
+            <style>
+              body {
+                font-family: sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f4f4f4;
+              }
+              .calculator {
+                width: 300px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 15px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                background-color: #e9e9e9;
+              }
+              #display {
+                width: 100%;
+                height: 60px;
+                font-size: 2.5em;
+                text-align: right;
+                border: 1px solid #b4b4b4;
+                border-radius: 5px;
+                margin-bottom: 15px;
+                padding: 10px;
+                box-sizing: border-box;
+                background-color: #fff;
+              }
+              .buttons {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+              }
+              button {
+                height: 60px;
+                font-size: 1.5em;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: #fafafa;
+                transition: background-color 0.2s;
+              }
+              button:hover {
+                background-color: #ddd;
+              }
+              .operator {
+                background-color: #f0ad4e;
+                color: white;
+              }
+              .operator:hover {
+                background-color: #ec971f;
+              }
+              #clear {
+                background-color: #d9534f;
+                color: white;
+                grid-column: span 2;
+              }
+              #equals {
+                background-color: #5cb85c;
+                color: white;
+                grid-column: span 2;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="calculator">
+              <input type="text" id="display" disabled />
+              <div class="buttons">
+                <button id="clear" onclick="clearDisplay()">C</button>
+                <button class="operator" onclick="appendToDisplay('/')">
+                  /
+                </button>
+                <button class="operator" onclick="appendToDisplay('*')">
+                  x
+                </button>
+
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button class="operator" onclick="appendToDisplay('-')">
+                  -
+                </button>
+
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button class="operator" onclick="appendToDisplay('+')">
+                  +
+                </button>
+
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button id="equals" onclick="calculateResult()">=</button>
+
+                <button
+                  onclick="appendToDisplay('0')"
+                  style="grid-column: span 2"
+                >
+                  0
+                </button>
+                <button onclick="appendToDisplay('.')">.</button>
+              </div>
+            </div>
+
+            <script>
+              const display = document.getElementById("display");
+
+              function appendToDisplay(value) {
+                // 곱하기 기호 'x'를 실제 연산자 '*'로 변경
+                if (value === "x") {
+                  value = "*";
+                }
+                display.value += value;
+              }
+
+              function clearDisplay() {
+                display.value = "";
+              }
+
+              function calculateResult() {
+                try {
+                  // eval() 함수는 문자열을 코드로 실행시켜주어 편리하지만,
+                  // 사용자가 입력한 값을 그대로 실행하기 때문에 보안에 매우 취약할 수 있습니다.
+                  // 이 예제에서는 간단한 구현을 위해 사용했지만, 실제 웹사이트에서는 사용을 피해야 합니다.
+                  const result = eval(display.value);
+                  display.value = result;
+                } catch (e) {
+                  display.value = "Error";
+                }
+              }
+            </script>
+          </body>
+        </html>
+      </head>
+    </html>
+  </head>
+</html>

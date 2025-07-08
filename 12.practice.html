@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기</title>
+  </head>
+  <body>
+    <select class="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="/">/</option>
+    </select>
+    <input type="text" class="num1" />
+    <input type="text" class="num2" />
+    <button onclick="calc()">계산</button>
+    <p>결과값 :</p>
+    <script>
+      calc = () => {
+        const op = document.querySelector(".operator").value;
+        const num1 = document.querySelector(".num1");
+        const num2 = document.querySelector(".num2");
+        const temp1 = Number(num1.value);
+        const temp2 = Number(num2.value);
+        let result;
+        if (op == "+") {
+          result = temp1 + temp2;
+        } else if (op == "-") {
+          result = temp1 - temp2;
+        } else if (op == "/") {
+          result = temp1 / temp2;
+        }
+
+        document.querySelector("p").innerHTML = "결과 값:" + result;
+        num1.value = "";
+        num2.value = "";
+      };
+    </script>
+  </body>
+</html>
