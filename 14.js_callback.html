@@ -6,11 +6,38 @@
     <title>js 콜백 함수</title>
   </head>
   <body>
-    <button>일반함수 예제</button>
-    <button>콜백함수 예제1</button>
+    <button onclick="basicFunction()">일반함수 예제</button>
+    <button onclick="callbackFunction1()">콜백함수 예제1</button>
+    <button onclick="callbackFunction2()">콜백함수 예제2</button>
+    <button onclick="callbackFunction3()">콜백함수 예제3</button>
     <script>
       basicFunction = () => {
         console.log("hello world");
+      };
+      callbackFunction1 = () => {
+        userInput((a) => {
+          alert(a + "님 안녕하세요");
+        });
+      };
+      callbackFunction12 = () => {
+        const numbers = [1, 2, 3, 4, 5];
+        numbers.forEach((a) => console.log(a)); // callback 함수의 일종이다.
+        //javascript
+        console.log("hello world!");
+      };
+      userInput = (callback) => {
+        callback("홍길동");
+      };
+      callbackFunction3 = () => {
+        // setTimeOut : 콜백함수처리 + 비동기적으로 동작하는 대표 적인 함수
+        setTimeout(() => {
+          console.log("hello world");
+        }, 2000);
+        console.log("hello world2");
+        setTimeout(() => {
+          console.log("hello world3");
+        }, 2000);
+        console.log("hello world4");
       };
     </script>
   </body>
