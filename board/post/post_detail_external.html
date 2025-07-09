@@ -37,21 +37,25 @@
     </div>
     <script>
       const tbody = document.querySelector("tbody");
-      const id = document.querySelector(".idInput");
 
       async function postApiSingleData() {
-        const result = await axios.get(
-          `https://jsonplaceholder.typicode.com/posts/${id.value}`
-        );
-        const data = result.data;
-        console.log(data);
-        tbody.innerHTML = `
+        const id = document.querySelector(".idInput").value;
+        try {
+          const result = await axios.get(
+            `http://localhost:8080/post/detail/${id}`
+          );
+          const data = result.data;
+          console.log(data);
+          tbody.innerHTML = `
         <tr><td> 게시글 번호 : ${data.id}</td> </tr>
         <tr><td> 제목 : ${data.title}</td> </tr>
-        <tr> <td>내용 : ${data.body}</td> </tr>
-        <tr><td> 유저 번호 : ${data.userId}</td> </tr>
+        <tr> <td>내용 : ${data.contents}</td> </tr>
     
         `;
+        } catch (e) {
+          alert("입력값이 잘못되었습니다.");
+          console.log("error!:" + e);
+        }
       }
     </script>
   </body>
