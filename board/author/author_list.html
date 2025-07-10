@@ -34,48 +34,28 @@
         <thead>
           <tr>
             <th>id</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-            <th>작성일</th>
+            <th>이름</th>
+            <th>이메일</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>hello java</td>
-            <td>hong@naver.com</td>
-            <td>2025-07-07</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>hello java2</td>
-            <td>hong2@naver.com</td>
-            <td>2025-07-07</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>hello java3</td>
-            <td>hong3@naver.com</td>
-            <td>2025-07-07</td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
     <script>
-      async function userList() {
+      (async function userList() {
         const result = await axios.get("http://localhost:8080/author/list");
+        console.log(result);
         const tbody = document.querySelector("tbody");
-        for (let i of result) {
-          tbody.innerHTML = `
+        for (let i of result.data) {
+          tbody.innerHTML += `
               <tr>
             <td>${i.id}</td>
-            <td>hello java3</td>
-            <td>hong3@naver.com</td>
-            <td>2025-07-07</td>
+            <td>${i.name}</td>
+            <td>${i.email}</td>
               </tr>
               `;
         }
-      }
+      })();
     </script>
   </body>
 </html>

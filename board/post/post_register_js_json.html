@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar bg-dark navbar-dark navbar-expand-lg">
+      <a href="" class="navbar-brand mx-auto">게시판 서비스</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="./post_list.html" class="nav-link">게시글 목록</a>
+        </li>
+        <li class="nav-item">
+          <a href="./post_detail.html" class="nav-link"> 게시글 상세 조회</a>
+        </li>
+        <li class="nav-item">
+          <a href="./post_register.html" class="nav-link"> 글쓰기 </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <form>
+        <div class="form-group">
+          제목 : <input type="text" class="form-control title" name="title" />
+        </div>
+
+        <div class="form-group">
+          내용 :
+          <textarea name="contents" class="form-control contents"> </textarea>
+        </div>
+        <!-- <input type="button" onclick="postCreate()" value="글쓰기"/>  -->
+        <button type="button" onclick="postCreate()" class="btn btn-primary">
+          글쓰기
+        </button>
+      </form>
+    </div>
+    <script>
+      function postCreate() {
+        const title = document.querySelector(".title").value;
+        const contents = document.querySelector(".contents").value;
+        try {
+          console.log(title, contents);
+          const result = axios.post("http://localhost:8080/post/register1", {
+            title,
+            contents,
+          });
+          window.location.href = "post_list.html";
+        } catch (e) {
+          console.log("error! : " + e);
+          alert("게시글 등록에 실패했습니다.");
+        }
+      }
+    </script>
+  </body>
+</html>

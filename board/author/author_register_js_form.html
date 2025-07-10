@@ -49,10 +49,13 @@
         const name = document.querySelector(".name").value;
         const password = document.querySelector(".password").value;
         const email = document.querySelector(".email").value;
-        const data = { name, password, email };
+        const data = new FormData();
+        data.append("name", name);
+        data.append("email", email);
+        data.append("password", password);
         try {
           const result = axios.post(
-            "http://localhost:8080/author/register1",
+            "http://localhost:8080/author/register2",
             data
           );
           window.location.href = "author_list.html";
